@@ -13,7 +13,7 @@ env/
 .env.*
 
 # Dataset
-data/*.csv
+data/twcs.csv
 data/*.zip
 
 # Generated evaluation files

@@ -2,59 +2,12 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-df = pd.read_csv(
-    "data/twcs.csv",
-    usecols=[
-        "tweet_id",
-        "author_id",
-        "inbound",
-        "text",
-        "response_tweet_id",
-        "in_response_to_tweet_id"
-    ]
-)
+DATA = "data/amazon_pairs.csv"
 
-df["text"] = df["text"].fillna("")
+pairs = pd.read_csv(DATA)
 
-tweets = df.set_index("tweet_id")
-
-amazon = df[
-    (df["author_id"] == "AmazonHelp") &
-    (df["response_tweet_id"].notna())
-].copy()
-
-pairs = []
-
-for _, amazon_row in amazon.iterrows():
-
-    response_ids = str(
-        amazon_row["response_tweet_id"]
-    ).split(",")
-
-    for response_id in response_ids:
-
-        try:
-            response_id = int(response_id)
-        except:
-            continue
-
-        if response_id not in tweets.index:
-            continue
-
-        customer = tweets.loc[response_id]
-
-        if customer["inbound"] != True:
-            continue
-
-        if len(customer["text"]) < 10:
-            continue
-
-        pairs.append({
-            "customer": customer["text"],
-            "amazon": amazon_row["text"]
-        })
-
-pairs = pd.DataFrame(pairs)
+pairs["customer"] = pairs["customer"].fillna("")
+pairs["amazon"] = pairs["amazon"].fillna("")
 
 print("Historical customer-response pairs:", len(pairs))
 
