@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Environment variables / secrets
+.env
+.env.*
+
+# Dataset
+data/*.csv
+data/*.zip
+
+# Generated evaluation files
+data/end_to_end_results.csv
+data/retrieval_evaluation.csv
+data/llm_judge_results.csv
+
+# ML / cache files
+*.pkl
+*.joblib
+*.model
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
