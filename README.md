@@ -2,6 +2,10 @@ HIVEBOT — AI Customer Support Agent
 An AI-assisted customer support agent built for the Hiver SDE Intern take-home assignment.
 HIVEBOT analyzes incoming customer messages, identifies the customer's intent, retrieves historically similar support interactions, drafts a suitable response, and decides whether the issue should be handled automatically or escalated to a human support agent.
 ---
+
+USE THIS LINK TO VIEW IT IN ACTION: https://hivebot.streamlit.app/
+
+---
 1. Project Overview
 Customer support systems receive a large number of messages covering common problems such as:
 Delivery delays
